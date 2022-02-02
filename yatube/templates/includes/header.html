@@ -1,0 +1,95 @@
+{% load static %}
+<div class="navbar navbar-default navbar-static-top navbar-fixed-top gradient">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'posts:index' %}">
+          <img src="{% static 'img/logo-ya.png' %}" width="150" height="35"
+               class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation" style="margin-left: 100px">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto" style="margin-left: 30px">
+          {% with request.resolver_match.view_name as view_name %}
+          <li class="nav-item">
+            <a class="nav-link"
+              {% if view_name == 'about:author' %}
+                style="background-color: #930909; color: #ffffff"
+              {% endif %}
+               href="{% url 'about:author' %}"
+               style="color: #ffffff">Об авторе</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"
+               {% if view_name == 'about:tech' %}
+                 style="background-color: #930909; color: #ffffff"
+               {% endif %}
+               href="{% url 'about:tech' %}"
+               style="color: #ffffff">Технологии</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link"
+                 {% if view_name == 'posts:post_create' %}
+                   style="background-color: #930909; color: #ffffff"
+                 {% endif %}
+                 href="{% url 'posts:post_create' %}"
+                 style="color: #ffffff">Новая запись</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                 {% if view_name == 'users:password_change' %}
+                   style="background-color: #930909; color: #ffffff"
+                 {% endif %}
+                 href="{% url 'users:password_change' %}"
+                 style="color: #ffffff">Изменить пароль</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                 {% if view_name == 'users:logout' %}
+                   style="background-color: #930909; color: #ffffff"
+                 {% endif %}
+                 href="{% url 'users:logout' %}"
+                 style="color: #ffffff">Выйти</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                {% if view_name == 'posts:profile' %}
+                  style="background-color: #930909; color: #ffffff"
+                {% endif %}
+                href="{% url 'posts:profile' username=user.username %}"
+                style="color: #ffffff; font"><i>Пользователь: {{ user.username }}</i>
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link"
+                 {% if view_name == 'users:login' %}
+                   style="background-color: #930909; color: #ffffff"
+                 {% endif %}
+                 href="{% url 'users:login' %}"
+                 style="color: #ffffff">Войти</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                 {% if view_name == 'users:signup' %}
+                   style="background-color: #930909; color: #ffffff"
+                 {% endif %}
+                 href="{% url 'users:signup' %}"
+                 style="color: #ffffff">Регистрация</a>
+            </li>
+          {% endif %}
+          {% endwith %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>

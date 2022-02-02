@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+{% load static %}
+  <div class="container">
+    <div class="row">
+      <h1 style="margin-top: 48px; margin-bottom: 30px">Технологии</h1>
+      <hr>
+      <br>
+      <br>
+      {% comment %}
+        Боковой блок со списком технологий
+        Займет всю ширину блока на мобильном
+        и 25% при размерах экрана ≥768px
+      {% endcomment %}
+      <aside class="col-12 col-md-3">
+        <strong><i>Технологии, использованные при создании проекта:</i></strong>
+        <hr>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a href="https://ru.wikipedia.org/wiki/Python" target="_blank"
+               style="color: red">
+              Python
+            </a>
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a href="https://ru.wikipedia.org/wiki/Django" target="_blank"
+               style="color: red">
+              Django
+            </a>
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a href="https://ru.wikipedia.org/wiki/SQL" target="_blank"
+               style="color: red">
+              SQL
+            </a>
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a href="https://ru.wikipedia.org/wiki/HTML" target="_blank"
+               style="color: red">
+              HTML
+            </a>
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a href="https://ru.wikipedia.org/wiki/CSS" target="_blank"
+               style="color: red">
+              CSS
+            </a>
+          </li>
+        </ul>
+        <br>
+        <br>
+        <strong><i>Инструменты:</i></strong>
+        <hr>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            PyCharm
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            Django ORM
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            Bootstrap
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            SQLite
+          </li>
+        </ul>
+      </aside>
+      {% comment %}
+        Статья
+        Займет всю ширину блока на мобильном
+        и 75% при размерах экрана ≥768px
+      {% endcomment %}
+      <article class="col-12 col-md-9" style="font-size: 20px">
+        <p>
+          <h5><strong><i>
+            Программирование - сложная штука,
+            но в то же время безумно интересная!
+          </i></strong></h5>
+          <br>
+          При разработке этого проекта я множество раз сталкивался с непонятными и пугающими моментами.
+          Я узнал такие понятия, как
+          <a href="https://pythonworld.ru/osnovy/dekoratory.html" target="_blank"
+             style="color: red">декораторы</a> и
+          <a href="https://www.djbook.ru/rel3.0/ref/validators.html" target="_blank"
+             style="color: red">валидаторы</a>,
+          и пытался применить их на практике. Порой приходилось часами сидеть над одной задачей,
+          перечитывая пройденные уроки и перекапывая гигабайты информации в Интернете.
+        </p>
+        <p align="center">
+          <img src="{% static 'img/angry.jpg' %}" width="90%" height="90%"
+               style="margin: 30px 15px 30px 20px; border:5px #f24537 ridge" alt="">
+        </p>
+        <p>
+          Но все трудности преодолимы! Далеко не все далось мне тяжело. Особенно если говорить об HTML и CSS,
+          основы которых преподаются в школах и ВУЗах. Верстать страницы очень даже увлекательно,
+          даже для бэкендера.<br>
+          Работа с Django для меня была в новинку, но в целом разобраться с основными моментами было несложно.
+          А что касается языка Python, его я начал изучать самостоятельно некоторое время назад, поэтому к
+          моменту написания проекта самые азы я уже знал.<br>
+          <br>
+          И в завершении хочу отметить, что с проектом мне очень помогли опытные наставники и ревьюеры
+          Яндекс.Практикума.
+          За что им огромное <strong>спасибо</strong>!
+        </p>
+      </article>
+      <p align="center">
+        <img src="{% static 'img/log.png' %}" width="50%" height="70%" alt="">
+      </p>
+    </div>
+  </div>
+{% endblock %}

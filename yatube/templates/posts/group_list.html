@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ group }}{% endblock %}
+{% block content %}
+  <div class="container">
+  <br><br>
+    <h1>{{ group }}</h1>
+  <br>
+    <p>{{ group.description }}</p>
+    <hr>
+    {% for post in page_obj %}
+      {% with group_list=True %}
+        {% include 'posts/includes/post_list.html' %}
+      {% endwith %}
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+    {% include 'posts/includes/paginator.html' %}
+    <br>
+  </div>
+{% endblock %}

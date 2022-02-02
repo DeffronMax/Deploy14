@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Понравившиеся{% endblock %}
+{% block content %}
+{% load thumbnail %}
+  <div class="container">
+    <h1 style="margin-top: 48px; margin-bottom: 30px">Понравившиеся записи</h1>
+    {% with like_page=True %}
+      {% include 'posts/includes/switcher.html' %}
+    {% endwith %}
+    {% for post in page_obj %}
+      {% include 'posts/includes/post_list.html' %}
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+    {% include 'posts/includes/paginator.html' %}
+    <br>
+  </div>
+{% endblock %}

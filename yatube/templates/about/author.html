@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load static %}
+  <div class="container py-5" style="overflow: hidden">
+    <h1 style="margin-bottom: 30px">Об авторе</h1>
+    <hr>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card"
+             style="background-color: #232323; color: #d0d0d0; border-color: #f24537; margin-bottom: 20px">
+          <div class="card-header gradient"
+               style="color: #ffffff">
+            <h1 align="center">
+              Здравствуйте, я - автор проекта <span style="color:#000000">Ya</span>Tube
+            </h1>
+          </div>
+          <p style="margin: 15px 20px; font-size: 20px">
+            <img src="{% static 'img/me.jpg' %}" width="50%" height="50%" class="col-12 col-md-5"
+                 style="float: left; margin-right: 10px; border:4px #f24537 ridge"
+                 alt="Автор">
+            Меня зовут Максим.<br>
+            <br>
+            Данный проект - это один из множества шагов на пути к моей текущей цели - стать Python-разработчиком.<br>
+            Меня с детства привлекали компьютеры и все, что с ними связано. Разобравшись с содержимым системного блока,
+            меня стало интересовать, что же находится внутри программ. Я попытался, но мне не хватило руки помощи
+            опытного наставника, и потому я обратился к помощи Яндекс.Практикума.<br>
+            <br>
+            <h5 align="center">Надеюсь, что у меня все получится!</h5>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card"
+             style="background-color: #232323; color: #d0d0d0; border-color: #f24537">
+          <div class="card-header gradient"
+               style="color: #ffffff; padding-bottom: 5px">
+            <h4 align="center">Здравствуй, друг!</h4>
+          </div>
+          <p style="margin: 20px 20px; font-size: 15px">
+            <img src="{% static 'img/me-av.jpg' %}" width="30%" height="30%" alt=""
+                   style="float: left; margin: 0 20px 0 10px; border:3px #f24537 ridge">
+            Благодарю за то, что посетил мой проект! Надеюсь его внешний вид не сильно огорчит тебя, приятного просмотра!
+            Оставляй комментарии к постам, буду очень признателен!
+          </p>
+          <hr>
+          <p style="margin: 20px 20px; font-size: 15px">
+            Мои контакты:
+            <ul style="font-size: 15px">
+              <li>Email: deffron@yandex.ru</li>
+              <li>
+                GitHub: <a href="https://github.com/DeffronMax" target="_blank"
+                             style="color: red"> DeffronMax</a>
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

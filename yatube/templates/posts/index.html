@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <h1 style="margin-top: 48px; margin-bottom: 30px">{{ title }}</h1>
+    {% with index=True %}
+      {% include 'posts/includes/switcher.html' %}
+    {% endwith %}
+    <p>
+      <img src="{% static 'img/breathtaking.jpg' %}" width="100%" height="100%"
+                   style="border:4px #f8210f ridge"
+                   alt="You are breathtaking">
+    </p>
+    {% if DEBUG %}
+      <div class="card"
+           style="background-color: #232323; color: #d0d0d0; border-color: #ef200f;
+                  margin: 10px 50px 20px; padding-bottom: 10px; text-align: center;
+                  font-size: 20px">
+        <span style="color: red; font-size: 30px">Внимание!</span>
+        В данный момент сайт находится в режиме разработки.<br>
+        Ничему не удивляйтесь...<br>
+        Приносим извинения за неудобства!
+      </div>
+    {% endif %}
+    {% for post in page_obj %}
+      {% include 'posts/includes/post_list.html' %}
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+    {% include 'posts/includes/paginator.html' %}
+    <br>
+  </div>
+{% endblock %}

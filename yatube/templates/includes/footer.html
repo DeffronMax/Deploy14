@@ -1,0 +1,8 @@
+{% load static %}
+<div class="footer-copyright text-center py-3">© {{ year }} Copyright
+  <br>
+  <a class="footer-copyright text-center py-3" href="{% url 'posts:index' %}">
+    <img src="{% static 'img/logo-ya.png' %}"
+         width="100" height="30" class="d-inline-block align-top" alt="">
+  </a>
+</div>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Страница не найдена{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container">
+  <br>
+  <h1>Страница {{ path }} не найдена!</h1>
+  <hr>
+  <div class="row">
+    <div class="col-12 col-xs-12 col-sm-12 col-md-8" style="position: relative">
+      <span class="err" style="font-size: 100px"></span>
+      <p class="error" style="font-size: 25px; margin-top: 50px">
+        Попробуйте ввести корректный адрес еще раз<br>или перейдите
+        <a href="{% url 'posts:index' %}" style="color: red">на главную</a>
+      </p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p class="error" style="font-size: 25px">
+        ...и пользуйтесь существующими<br> и проверенными ссылками!
+      </p>
+      <span class="page" style="font-size: 70px"></span>
+    </div>
+    <div class="col-12 col-xs-12 col-sm-12 col-md-4">
+      <img src="{% static 'img/travolta.gif' %}" width="100%" height="100%"
+           style="position: relative; top: 24px">
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

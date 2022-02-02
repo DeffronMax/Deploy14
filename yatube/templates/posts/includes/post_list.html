@@ -1,0 +1,56 @@
+{% load thumbnail %}
+{% load static %}
+<article>
+  <ul>
+    <li>
+      Автор:
+      <a href="{% url 'posts:profile' post.author %}"
+         style="color: red; text-decoration: none">
+        {{ post.author.get_full_name }}
+      </a>
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+  <p>{{ post.text|safe }}</p>
+  {% thumbnail post.image "1500" crop="center" upscale=True as im %}
+    <img class="card-img my-2" src="{{ im.url }}"
+         width="100%" height="100%"
+         style="border:4px #fa1e0e ridge">
+  {% endthumbnail %}
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4" style="margin-bottom: 15px; margin-top: 10px">
+      <a href="{% url 'posts:post_like' post.pk %}" style="text-decoration: none">
+        <div class="card"
+             style="background-color: #232323; color: #d0d0d0; border-color: #ef200f;
+                    padding: 10px 10px 14px; display: inline">
+          <img src="{% static 'img/like-2.png' %}" width="30" height="30" alt="понравилось">
+          {{ post.likes_count }}
+        </div>
+      </a>
+      <div class="card"
+           style="background-color: #232323; color: #d0d0d0; border-color: #ef200f;
+                  padding: 10px 10px 14px; display: inline">
+        <img src="{% static 'img/comment.png' %}" width="30" height="30" alt="комментарии">
+        {{ post.comments_count }}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4" style="margin-bottom: 5px; margin-top: 10px">
+      <a class="myButton gradient"
+         href="{% url 'posts:post_detail' post.pk %}">
+        Подробная информация
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4" style="margin-bottom: 5px; margin-top: 10px">
+      {% if not group_list %}
+        {% if post.group %}
+          <a class="myButton gradient"
+             href="{% url 'posts:group_list' post.group.slug %}">
+            Все записи группы {{ post.group }}
+          </a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</article>

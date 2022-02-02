@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Пост {{ post.text|truncatechars:30 }}{% endblock %}
+{% block content %}
+{% load static %}
+{% load thumbnail %}
+  <div class="container py-5">
+    <div class="row">
+      <aside class="col-12 col-lg-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+          {% if post.group %}
+            <li class="list-group-item"
+                style="background-color: #232323; color: #d0d0d0">
+              Группа:
+              <a href="{% url 'posts:group_list' post.group.slug %}"
+                 style="color: red; text-decoration: none">
+                {{ post.group }}
+              </a>
+            </li>
+          {% endif %}
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            Автор:
+            <a href="{% url 'posts:profile' post.author %}"
+               style="color: red; text-decoration: none">
+              {{ post.author.get_full_name }}
+            </a>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center"
+              style="background-color: #232323; color: #d0d0d0">
+            Всего постов автора: <span>{{ posts_count }}</span>
+          </li>
+          <li class="list-group-item"
+              style="background-color: #232323; color: #d0d0d0">
+            <a class="myButton gradient"
+               href="{% url 'posts:profile' post.author %}">
+              Все посты пользователя
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <article class="col-12 col-lg-9">
+        <p>{{ post.text|safe }}</p>
+        {% thumbnail post.image "750x500" crop="center" upscale=True as im %}
+          <img class="card-img my-2" src="{{ im.url }}"
+               style="border:4px #fa1e0e ridge">
+        {% endthumbnail %}
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="margin-top: 15px">
+            <div class="card"
+                 style="background-color: #232323; color: #d0d0d0; border-color: #ef200f;
+                        padding: 10px 10px 14px; display: inline">
+              Мне нравится:
+              <a href="{% url 'posts:post_like' post.pk %}"
+                 style="margin-left: 10px; margin-right: 5px; text-decoration: none">
+              {% if is_liked %}
+                <img src="{% static 'img/liked.png' %}" width="30" height="30" alt="лайк"
+                     style="margin-bottom: 2px">
+              {% else %}
+                <img src="{% static 'img/notliked.png' %}" width="30" height="30" alt="лайк"
+                     style="margin-bottom: 2px">
+              {% endif %}
+              </a>
+              {{ like_count }}
+            </div>
+            <div class="card"
+                 style="background-color: #232323; color: #d0d0d0; border-color: #ef200f;
+                        padding: 10px 10px 14px; display: inline">
+              Комментариев: {{ comment_count }}
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-top: 15px">
+            {% if user.username == post.author.username %}
+                <a class="myButton gradient"
+                   href="{% url 'posts:post_edit' post.pk %}">
+                  Редактировать
+                </a>
+                <a class="myButton gradient"
+                   href="{% url 'posts:post_delete' post.pk %}">
+                  Удалить
+                </a>
+            {% endif %}
+          </div>
+        </div>
+        <br>
+        {% include 'posts/includes/comments.html' %}
+      </article>
+    </div>
+  </div>
+{% endblock %}

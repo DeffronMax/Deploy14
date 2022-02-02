@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Ошибка сервера{% endblock %}
+{% block content %}
+<div class="container">
+  <br>
+  <h1>500 - Внутренняя ошибка сервера!</h1>
+  <hr>
+  <div style="position: relative">
+    <span class="serv500" style="font-size: 80px"></span>
+    <p class="error">
+      Cервер недоступен по неизвестным причинам!<br>
+      ...повторите попытку позже
+    </p>
+  </div>
+</div>
+<br>
+{% endblock %}

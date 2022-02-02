@@ -1,0 +1,43 @@
+{% if user.is_authenticated %}
+  <div class="row my-3">
+    <ul class="nav nav-tabs" style="text-align: center">
+      <li class="nav-item col-12 col-xs-12 col-sm-12 col-md-3">
+        <a class="nav-link"
+           {% if index %}
+             style="background-color: #930909; color: #ffffff"
+           {% endif %}
+           href="{% url 'posts:index' %}"
+           style="color: red">
+          Все авторы
+        </a>
+      </li>
+      <li class="nav-item col-12 col-xs-12 col-sm-12 col-md-3">
+        <a class="nav-link"
+           {% if follow %}
+             style="background-color: #930909; color: #ffffff"
+           {% endif %}
+           href="{% url 'posts:follow_index' %}"
+           style="color: red">
+          Подписки: {{ follow_count }}
+        </a>
+      </li>
+      <li class="nav-item col-12 col-xs-12 col-sm-12 col-md-3">
+        <a class="nav-link"
+           {% if like_page %}
+             style="background-color: #930909; color: #ffffff"
+           {% endif %}
+           href="{% url 'posts:like_index' %}"
+           style="color: red">
+          Понравившиеся
+        </a>
+      </li>
+      <li class="nav-item col-12 col-xs-12 col-sm-12 col-md-3">
+        <a class="nav-link"
+           href="{% url 'posts:group_create' %}"
+           style="color: red">
+          Создать группу
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endif %}
